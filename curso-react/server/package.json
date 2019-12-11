@@ -12,5 +12,8 @@
     "react"
   ],
   "author": "Joao",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.8.0"
+  }
 }
