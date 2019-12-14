@@ -4,16 +4,16 @@ import '../node_modules/jquery/dist/jquery.min'
 import '../node_modules/popper.js/dist/umd/popper.min'
 import '../node_modules/bootstrap/dist/js/bootstrap.min'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import { CursoIndex } from './pages/curso'
-import { ContatoIndex } from './pages/contato'
-import {Menu} from './pages/menu'
+//import { CursoIndex } from './paginas/curso'
+//import { ContatoIndex } from './paginas/contato'
+import {Menu} from './paginas/menu'
+import {Rotas} from'./rotas'
 
 function App() {
   return (
     <div>
       <Menu/>
-      <CursoIndex />
-      <ContatoIndex />
+      <Rotas/>
     </div>
 
   )
