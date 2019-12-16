@@ -1,5 +1,5 @@
 import React from 'react';
-import Cabecalho from '../../Componentes/cabecalho';
+import {Cabecalho} from '../../componentes/cabecalho';
 export class CursoIndex extends React.Component {
     render() {
         return (
