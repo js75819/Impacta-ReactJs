@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { FormCurso} from ',/from'
-import { CursoList} from ',/from'
+import { FormCurso} from './form'
+import { CursoList} from './list'
 
 export class CadastroCurso extends Component {
     render() {
