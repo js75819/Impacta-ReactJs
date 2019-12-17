@@ -65,7 +65,10 @@ export class FormCurso extends Component {
                     </div>
                     <div className="form-group row">
                         <button
-                            className="btn btn-primary ml-9 mb-9">
+                            className="btn btn-primary ml-9 mb-9"
+                            onClick ={ this.props.adicionar}
+                            >
+
                             Adicionar
             </button>
                     </div>

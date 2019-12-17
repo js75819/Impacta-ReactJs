@@ -46,6 +46,26 @@ export class CadastroCurso extends Component {
         this.setState({categoria: html.target.value})
        
     }
+    adicionar(evento){
+        evento.preventDefault()
+        
+        axios.post(URL, this.state)
+        .then(_=>{
+            this.limpar()
+            this.listar()
+
+           alert('Curso Adicionado')
+        } )
+        .catch(error => {
+            console.log(error)
+        alert('Erro ao Adicionar Curso')
+        })
+
+    }
+
+    limpar(){
+        this.setState(this.initialState)
+    }
        
 
     state = {...this.initialState, cursos: [] }
@@ -79,6 +99,8 @@ export class CadastroCurso extends Component {
 
                     categoria={this.state.categoria}
                     categoriaChange={this.categoriaChange.bind(this)}
+
+                    adicionar={this.adicionar.bind(this)}
 
 
 
