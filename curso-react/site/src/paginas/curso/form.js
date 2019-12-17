@@ -9,7 +9,7 @@ export class FormCurso extends Component {
                 <form>
                     <div className="htmlform-group row">
                         <label htmlFor="codigo"
-                            className="col-sm-3 col-htmlform-label">
+                            className="col-sm-3 col-form-label">
                             Código:
             </label>
                         <div className="col-sm-9 col-9">
@@ -20,7 +20,7 @@ export class FormCurso extends Component {
                     </div>
                     <div className="form-group row">
                         <label htmlFor="descrição"
-                            className="col-sm-3 col-htmlform-label">
+                            className="col-sm-3 col-form-label">
                             Descrição:
             </label>
                         <div className="col-sm-9">
