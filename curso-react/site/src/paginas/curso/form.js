@@ -44,7 +44,7 @@ export class FormCurso extends Component {
                             className="col-sm-3 col-form-label">
                             Preço:</label>
                         <div className="col-sm-9 col-9">
-                            <input type="text"
+                            <input type="number"
                                 className="form-control" id="preco" 
                                 value={this.props.preco} onChange={this.props.precoChange} />
                         </div>
