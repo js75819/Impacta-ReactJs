@@ -50,8 +50,9 @@ export class CadastroCurso extends Component {
 
     }
     adicionar(evento) {
+        evento.preventDefault()
 
-        const { codigo, descricao, cargaHoraria, categoria, preco } = this.state
+        const {_id, codigo, descricao, cargaHoraria, categoria, preco } = this.state
         const body = {
             codigo,
             descricao,
@@ -59,10 +60,19 @@ export class CadastroCurso extends Component {
             categoria,
             preco
         }
-        evento.preventDefault()
-
-
-        axios.post(URL, body)
+          if(_id){
+              axios.put(`${URL}/${_id}`)
+              .then(_id =>{
+                  this.limpar(evento)
+                  this.listar()
+                  alert('Curso atualizado')                
+              })
+              .catch(error =>{
+                  console.log(error)
+              })             
+          } else {
+              
+            axios.post(URL, body)
             .then(_ => {
                 this.limpar()
                 this.listar()
@@ -73,7 +83,7 @@ export class CadastroCurso extends Component {
                 console.log(error)
                 alert('Erro ao Adicionar Curso')
             })
-
+          }
     }
 
     remover(curso) {
