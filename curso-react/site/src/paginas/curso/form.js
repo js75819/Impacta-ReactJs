@@ -52,9 +52,10 @@ export class FormCurso extends Component {
                     <div className="form-group row">
                         <label htmlFor="categoria"
                             className="col-sm-3 col-form-label">Categoria:</label>
-                        <div className="col-sm-9 col-9"
-                        value={this.props.categoria} onChange={this.props.categoriaChange} >
-                            <select className="form-control" id="categoria" >
+                        <div className="col-sm-9 col-9">
+                            <select className="form-control" id="categoria"
+                            value={this.props.categoria} onChange={this.props.categoriaChange}
+                            >
                                 <option>INFORMATICA</option>
                                 <option>ENGENHARIA</option>
                                 <option>ADMINISTRACAO</option>
