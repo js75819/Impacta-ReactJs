@@ -7,7 +7,7 @@ export class FormCurso extends Component {
             <div className="border-right pl-3 pr-3">
                 <h3 className="border-bottom">formulário</h3>
                 <form>
-                    <div className="htmlform-group row">
+                    <div className="form-group row">
                         <label htmlFor="codigo"
                             className="col-sm-3 col-form-label">
                             Código:
