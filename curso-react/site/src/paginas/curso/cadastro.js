@@ -9,6 +9,7 @@ const URL = 'http://localhost:3200/api/cursos'
 export class CadastroCurso extends Component {
 
     initialState = {
+        _id: null,
         codigo: '',
         descricao: '',
         cargaHoraria: '',
@@ -50,7 +51,7 @@ export class CadastroCurso extends Component {
     }
     adicionar(evento) {
 
-        const { codigo, descricao, cargaHoraria, categoria, preco }=this.state 
+        const { codigo, descricao, cargaHoraria, categoria, preco } = this.state
         const body = {
             codigo,
             descricao,
@@ -75,7 +76,17 @@ export class CadastroCurso extends Component {
 
     }
 
-    removerCurso(curso){
+    remover(curso) {
+        if (window.confirm('deseja realmente remover curso?')) {
+            axios.delete(`${URL}/${curso._id}`)
+                .then(_ => {
+                    this.listar()
+                    alert('Curso deletado com sucesso')
+                })
+                .catch(error => {
+                    alert('Erro ao deletar Curso')
+                })
+        }
 
     }
 
@@ -83,6 +94,17 @@ export class CadastroCurso extends Component {
         this.setState(this.initialState)
     }
 
+    consultar(curso) {
+        this.setState({
+            _id: curso._id,
+            codigo: curso.codigo,
+            descricao: curso.descricao,
+            cargaHoraria: curso.cargaHoraria,
+            categoria: curso.categoria,
+            preco: curso.preco
+
+        })
+    }
 
     state = { ...this.initialState, cursos: [] }
 
@@ -117,13 +139,18 @@ export class CadastroCurso extends Component {
                         categoriaChange={this.categoriaChange.bind(this)}
 
                         adicionar={this.adicionar.bind(this)}
+                        isAtualizar={this.state._id ? true : false}
 
 
 
                     />
                 </div>
                 <div className="col-md-6">
-                    <CursoList cursos={this.state.cursos} />
+                    <CursoList
+                        cursos={this.state.cursos}
+                        removerCurso={this.remover.bind(this)}
+                        consultarCurso={this.consultar.bind(this)}
+                    />
                 </div>
             </div>
         )

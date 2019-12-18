@@ -68,8 +68,15 @@ export class FormCurso extends Component {
                             className="btn btn-primary ml-9 mb-9"
                             onClick ={ this.props.adicionar}
                             >
+                                {this.props.isAtualizar? 'Atualizar': 'Adicionar'}
 
-                            Adicionar
+
+            </button>
+            <button 
+                            className="btn btn-primary ml-9 mb-9"
+                            onClick ={ this.limpar}
+                            
+                            >Limpar
             </button>
                     </div>
                 </form>
