@@ -74,7 +74,7 @@ export class FormCurso extends Component {
             </button>
             <button 
                             className="btn btn-primary ml-9 mb-9"
-                            onClick ={ this.limpar}
+                            onClick ={ this.props.limpar}
                             
                             >Limpar
             </button>

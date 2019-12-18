@@ -14,11 +14,21 @@ export class CadastroCurso extends Component {
         descricao: '',
         cargaHoraria: '',
         preco: '',
-        categoria: 'ENGENHARIA',
-        cursos: []
+        categoria: 'ENGENHARIA'
+        
 
     }
 
+    state = { ...this.initialState, cursos: [] }
+
+    constructor(props) {
+        super(props);
+        this.listar();
+    }
+
+    
+
+    
 
 
     codigoChange(html) {
@@ -52,16 +62,16 @@ export class CadastroCurso extends Component {
     adicionar(evento) {
         evento.preventDefault()
 
-        const {_id, codigo, descricao, cargaHoraria, categoria, preco } = this.state
+        const {_id, codigo, descricao, cargaHoraria, preco, categoria } = this.state
         const body = {
             codigo,
             descricao,
             cargaHoraria,
-            categoria,
-            preco
+            preco,
+            categoria
         }
           if(_id){
-              axios.put(`${URL}/${_id}`)
+            axios.put(`${URL}/${_id}`, body)
               .then(_id =>{
                   this.limpar(evento)
                   this.listar()
@@ -99,9 +109,16 @@ export class CadastroCurso extends Component {
         }
 
     }
-
-    limpar() {
+    limpar(event){
+        if(event){
+            event.preventDefault();
+        }
+        
         this.setState(this.initialState)
+    }
+
+    categoriaCallback(html){
+        this.setState({categoria : html.target.value})
     }
 
     consultar(curso) {
@@ -116,18 +133,14 @@ export class CadastroCurso extends Component {
         })
     }
 
-    state = { ...this.initialState, cursos: [] }
-
-    constructor(props) {
-        super(props);
-        this.listar();
-    }
+   
     listar() {
         axios.get(URL).then(response => {
             this.setState({ cursos: response.data })
         })
     }
 
+   
     render() {
         return (
             <div className="row border-bottom">
@@ -141,6 +154,7 @@ export class CadastroCurso extends Component {
 
                         cargaHoraria={this.state.cargaHoraria}
                         cargaHorariaChange={this.cargaHorariaChange.bind(this)}
+                        categoriaCallback={this.categoriaCallback.bind(this)}
 
                         preco={this.state.preco}
                         precoChange={this.precoChange.bind(this)}
@@ -149,6 +163,7 @@ export class CadastroCurso extends Component {
                         categoriaChange={this.categoriaChange.bind(this)}
 
                         adicionar={this.adicionar.bind(this)}
+                        limpar={this.limpar.bind(this)}
                         isAtualizar={this.state._id ? true : false}
 
 
