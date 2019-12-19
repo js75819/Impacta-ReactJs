@@ -25,3 +25,10 @@ export const telefoneOnChange = function(evento){
         value: evento.target.value
     }
 }
+
+export const assuntoOnChange = function(evento){
+    return{
+        type: 'ATUALIZA_ASSUNTO' ,
+        value: evento.target.value
+    }
+}

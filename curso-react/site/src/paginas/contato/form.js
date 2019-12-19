@@ -5,7 +5,8 @@ import {
     dataOnChange,
     nomeOnChange,
     emailOnChange,
-    telefoneOnChange
+    telefoneOnChange,
+    assuntoOnChange
 } from '../../actions/contatoActions'
 
 
@@ -65,7 +66,9 @@ class ContatoForm extends React.Component {
                         <div className="col-sm-9">
                             <textarea className="form-control"
                                 id="assunto" rows="5"
-                                value={this.props.assunto} />
+                                value={this.props.assunto}
+                                onChange={this.props.assuntoOnChange}
+                                />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -93,7 +96,8 @@ const mapActionsToProps = dispatch => bindActionCreators({
     dataOnChange,
     nomeOnChange,
     emailOnChange,
-    telefoneOnChange
+    telefoneOnChange,
+    assuntoOnChange
 
 }, dispatch)
 
