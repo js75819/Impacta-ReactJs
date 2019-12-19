@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import {
     dataOnChange,
     nomeOnChange,
-    emailOnChange
+    emailOnChange,
+    telefoneOnChange
 } from '../../actions/contatoActions'
 
 
@@ -53,7 +54,9 @@ class ContatoForm extends React.Component {
                         <div className="col-sm-9">
                             <input type="number"
                                 className="form-control" id="telefone"
-                                value={this.props.telefone} />
+                                value={this.props.telefone} 
+                                onChange={this.props.telefoneOnChange}
+                                />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -89,7 +92,8 @@ const mapStateToProps = store => ({
 const mapActionsToProps = dispatch => bindActionCreators({
     dataOnChange,
     nomeOnChange,
-    emailOnChange
+    emailOnChange,
+    telefoneOnChange
 
 }, dispatch)
 

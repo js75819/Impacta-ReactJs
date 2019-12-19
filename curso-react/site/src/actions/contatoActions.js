@@ -18,3 +18,10 @@ export const emailOnChange = function(evento){
         value: evento.target.value
     }
 }
+
+export const telefoneOnChange = function(evento){
+    return{
+        type: 'ATUALIZA_TELEFONE' ,
+        value: evento.target.value
+    }
+}
