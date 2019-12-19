@@ -11,3 +11,10 @@ export const nomeOnChange = function(evento){
         value :evento.target.value
     }
 }
+
+export const emailOnChange = function(evento){
+    return{
+        type: 'ATUALIZA_EMAIL' ,
+        value: evento.target.value
+    }
+}
