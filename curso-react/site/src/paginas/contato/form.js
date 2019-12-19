@@ -1,7 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 
-export class ContatoForm extends React.Component {
+class ContatoForm extends React.Component {
     render() {
         return (
             <div>
@@ -35,6 +36,15 @@ export class ContatoForm extends React.Component {
                         </div>
                     </div>
                     <div className="form-group row">
+                        <label htmlFor="telefone"
+                            className="col-sm-3 col-form-label">Telefone:</label>
+                        <div className="col-sm-9">
+                            <input type="number"
+                                className="form-control" id="telefone"
+                                value={this.props.telefone} />
+                        </div>
+                    </div>
+                    <div className="form-group row">
                         <label htmlFor="assunto"
                             className="col-sm-3 col-form-label">Assunto:</label>
                         <div className="col-sm-9">
@@ -55,3 +65,13 @@ export class ContatoForm extends React.Component {
         )
     }
 }
+
+const mapStateToProps = store => ({
+    data: store.contato.data,
+    nome: store.contato.nome,
+    email:store.contato.email,
+    telefone:store.contato.telefone,
+    assunto:store.contato.assunto
+})
+
+export default connect(mapStateToProps, null)(ContatoForm)
