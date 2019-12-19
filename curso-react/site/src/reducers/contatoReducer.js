@@ -9,6 +9,7 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action){
     switch(action.type){
         case 'ATUALIZA_DATA' : return {...state, data : action.value};
+        case 'ATUALIZA_NOME' : return {...state, nome : action.value};
         default: return state
     }       
 }

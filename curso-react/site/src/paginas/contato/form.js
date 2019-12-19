@@ -1,5 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux' 
+import {
+    dataOnChange,
+    nomeOnChange
+} from '../../actions/contatoActions'
 
 
 class ContatoForm extends React.Component {
@@ -14,7 +19,9 @@ class ContatoForm extends React.Component {
                         <div className="col-sm-5 col-6">
                             <input type="date"
                                 className="form-control" id="data"
-                                value={this.props.data} />
+                                value={this.props.data} 
+                                onChange={this.props.dataOnChange}
+                                />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -23,7 +30,9 @@ class ContatoForm extends React.Component {
                         <div className="col-sm-9">
                             <input type="text"
                                 className="form-control" id="nome"
-                                value={this.props.nome} />
+                                value={this.props.nome} 
+                                onChange={this.props.nomeOnChange}
+                                />
                         </div>
                     </div>
                     <div className="form-group row">
@@ -74,4 +83,11 @@ const mapStateToProps = store => ({
     assunto:store.contato.assunto
 })
 
+const mapActionsToProps = dispatch => bindActionCreators({
+    dataOnChange,
+    nomeOnChange
+
+}, dispatch)
+
 export default connect(mapStateToProps, null)(ContatoForm)
+
