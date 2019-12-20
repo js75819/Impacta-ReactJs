@@ -6,11 +6,23 @@ import {
     nomeOnChange,
     emailOnChange,
     telefoneOnChange,
-    assuntoOnChange
+    assuntoOnChange,
+    adicionar,
+    limpar
+    
+
+    
 } from '../../actions/contatoActions'
 
 
 class ContatoForm extends React.Component {
+//
+   preAdicionar(evento){
+     evento.preventDefault()
+       const {data, nome, email, telefone, assunto, adicionar} = this.props
+        adicionar(data, nome, email, telefone, assunto)
+    }
+
     render() {
         return (
             <div>
@@ -69,13 +81,21 @@ class ContatoForm extends React.Component {
                                 value={this.props.assunto}
                                 onChange={this.props.assuntoOnChange}
                                 />
-                        </div>
+                        </div> 
+                        
                     </div>
                     <div className="form-group row">
                         
-<button className="btn btn-primary ml-3 mb-3">
+<button className="btn btn-primary ml-3 mb-3"
+onClick={this.preAdicionar.bind(this)}
+>
                             Adicionar
 </button>
+
+<button className="btn btn-primary ml-3 mb-3" onClick =
+                        {this.props.limpar}>
+                            Limpar
+                        </button>
                     </div>
                 </form>
             </div>
@@ -84,12 +104,13 @@ class ContatoForm extends React.Component {
     }
 }
 
-const mapStateToProps = store => ({
+const mapStoreToProps = store => ({
     data: store.contato.data,
     nome: store.contato.nome,
     email:store.contato.email,
     telefone:store.contato.telefone,
-    assunto:store.contato.assunto
+    assunto:store.contato.assunto,
+    adicionar:store.contato.adicionar
 })
 
 const mapActionsToProps = dispatch => bindActionCreators({
@@ -97,9 +118,13 @@ const mapActionsToProps = dispatch => bindActionCreators({
     nomeOnChange,
     emailOnChange,
     telefoneOnChange,
-    assuntoOnChange
+    assuntoOnChange,
+    limpar,
+    adicionar
+    
+
 
 }, dispatch)
 
-export default connect(mapStateToProps, mapActionsToProps)(ContatoForm)
+export default connect(mapStoreToProps, mapActionsToProps)(ContatoForm)
 
