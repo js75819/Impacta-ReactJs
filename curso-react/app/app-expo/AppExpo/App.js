@@ -1,23 +1,29 @@
-import React from 'react'
-
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Home from './screens/home';
+import Contatos from './screens/contato'
+import Cursos from './screens/cursos'
 
 const Stack = createStackNavigator({
-  Home : {
+  TelaInicial : {
     navigationOptions : {
-      title: 'Home',
+      header : null
     },
     screen: Home
   },
   Cursos : {
     navigationOptions : {
-      title: 'Cursos',
+      title: 'Cursos'
     },
-    screen: Home
-  }
+    screen: Cursos
+  },
+  Contatos : {
+    navigationOptions : {
+      title: 'Contatos'
+    },
+    screen: Contatos
+  },
 })
 
 export default createAppContainer(Stack);
